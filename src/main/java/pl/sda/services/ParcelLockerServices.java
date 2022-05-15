@@ -14,7 +14,6 @@ public class ParcelLockerServices {
 
     //#1
     public Stream<ParcelLocker> createID(String miasto){
-        int i =1;
        return parcelLockers.stream()
                 .filter(p-> p.getAdress().getMiasto().equals(miasto));
 //todo
