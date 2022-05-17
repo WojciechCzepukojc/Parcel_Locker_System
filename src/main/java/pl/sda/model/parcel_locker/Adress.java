@@ -1,6 +1,8 @@
 package pl.sda.model.parcel_locker;
 
 
+import java.util.NoSuchElementException;
+
 public class Adress {
 
     private String ulica;
@@ -8,8 +10,8 @@ public class Adress {
     private String kod;
 
     public Adress(String ulica, String miasto, String kod) {
-        this.ulica = ulica;
-        this.miasto = miasto;
+        this.ulica = isValidStreet(ulica);
+        this.miasto = isValidCity(miasto);
         this.kod = kod;
     }
 
@@ -45,4 +47,27 @@ public class Adress {
                 ", kod='" + kod + '\'' +
                 '}';
     }
+
+    private String isValidStreet (String ulica){
+        if (ulica != null && ulica.length() >3
+                && !ulica.toLowerCase().equals(ulica)
+                && !ulica.toUpperCase().equals(ulica)) {
+            return ulica;
+        }else{
+            throw new NoSuchElementException("Podano błędną  nazwę ulicy");
+        }
+
+
+    }
+
+    private String isValidCity (String city) {
+        if (city != null && city.length() > 3
+                && !city.toLowerCase().equals(city)
+                && !city.toUpperCase().equals(city)) {
+            return city;
+        } else {
+            throw new NoSuchElementException("Podano błędną nazwę miasta");
+        }
+    }
+
 }
