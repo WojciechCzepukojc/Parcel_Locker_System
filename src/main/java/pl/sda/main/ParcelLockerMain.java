@@ -41,15 +41,15 @@ public class ParcelLockerMain {
         //#1
         public static void parcelLockerAdding(){
             System.out.println("Podaj ulicę");
-            String ulica = scanner.next();
+            String street = scanner.next();
 
             System.out.println("Podaj miasto");
-            String miasto = scanner.next();
+            String city = scanner.next();
 
             System.out.println("Podaj kod");
-            String kod = scanner.next();
+            String zipCode = scanner.next();
 
-            String id = parcelLockerServices.addNewParcelLocker(ulica,miasto,kod);
+            String id = parcelLockerServices.addNewParcelLocker(street, city, zipCode);
             System.out.println("Pomyślnie dodano paczkomat o ID: " + id );
 
 

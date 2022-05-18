@@ -5,62 +5,62 @@ import java.util.NoSuchElementException;
 
 public class Adress {
 
-    private String ulica;
-    private String miasto;
-    private String kod;
+    private String street;
+    private String city;
+    private String zipCode;
 
-    public Adress(String ulica, String miasto, String kod) {
-        this.ulica = isValidStreet(ulica);
-        this.miasto = isValidCity(miasto);
-        this.kod = isZipCodeValid(kod) ;
+    public Adress(String street, String city, String zipCode) {
+        this.street = isValidStreet(street);
+        this.city = isValidCity(city);
+        this.zipCode = isZipCodeValid(zipCode);
     }
 
-    public String getUlica() {
-        return ulica;
+    public String getStreet() {
+        return street;
     }
 
-    public void setUlica(String ulica) {
-        this.ulica = ulica;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getMiasto() {
-        return miasto;
+    public String getCity() {
+        return city;
     }
 
-    public void setMiasto(String miasto) {
-        this.miasto = miasto;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getKod() {
-        return kod;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setKod(String kod) {
-        this.kod = kod;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override
     public String toString() {
         return "Adress{" +
-                "ulica='" + ulica + '\'' +
-                ", miasto='" + miasto + '\'' +
-                ", kod='" + kod + '\'' +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
                 '}';
     }
 
-    private String isValidStreet (String ulica){
+    private String isValidStreet(String ulica) {
         if (ulica != null && ulica.length() >= 3
                 && !ulica.toLowerCase().equals(ulica)
                 && !ulica.toUpperCase().equals(ulica)) {
             return ulica;
-        }else{
+        } else {
             throw new NoSuchElementException("Podano błędną  nazwę ulicy");
         }
 
 
     }
 
-    private String isValidCity (String city) {
+    private String isValidCity(String city) {
         if (city != null && city.length() >= 3
                 && !city.toLowerCase().equals(city)
                 && !city.toUpperCase().equals(city)) {
@@ -70,11 +70,11 @@ public class Adress {
         }
     }
 
-    private String isZipCodeValid(String zip){
+    private String isZipCodeValid(String zip) {
         String reg = "\\d{2}(-\\d{3})?";
-        if (zip.matches(reg)){
+        if (zip.matches(reg)) {
             return zip;
-        }else {
+        } else {
             throw new NoSuchElementException("Podano błędny ZIPCode");
         }
     }
