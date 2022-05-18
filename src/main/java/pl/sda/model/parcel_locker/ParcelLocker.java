@@ -35,9 +35,8 @@ public class ParcelLocker {
     private String makeCityShortcut(){
 
         String a = adress.getMiasto();
-        String b = a.substring(0,3);
-        String c = b.toUpperCase();
-        return c;
+        String b = a.substring(0,3).toUpperCase();
+        return b;
     }
 
     //#1

@@ -12,7 +12,7 @@ public class Adress {
     public Adress(String ulica, String miasto, String kod) {
         this.ulica = isValidStreet(ulica);
         this.miasto = isValidCity(miasto);
-        this.kod = kod;
+        this.kod = isZipCodeValid(kod) ;
     }
 
     public String getUlica() {
@@ -49,7 +49,7 @@ public class Adress {
     }
 
     private String isValidStreet (String ulica){
-        if (ulica != null && ulica.length() >3
+        if (ulica != null && ulica.length() >= 3
                 && !ulica.toLowerCase().equals(ulica)
                 && !ulica.toUpperCase().equals(ulica)) {
             return ulica;
@@ -61,12 +61,21 @@ public class Adress {
     }
 
     private String isValidCity (String city) {
-        if (city != null && city.length() > 3
+        if (city != null && city.length() >= 3
                 && !city.toLowerCase().equals(city)
                 && !city.toUpperCase().equals(city)) {
             return city;
         } else {
             throw new NoSuchElementException("Podano błędną nazwę miasta");
+        }
+    }
+
+    private String isZipCodeValid(String zip){
+        String reg = "\\d{2}(-\\d{3})?";
+        if (zip.matches(reg)){
+            return zip;
+        }else {
+            throw new NoSuchElementException("Podano błędny ZIPCode");
         }
     }
 
