@@ -38,10 +38,13 @@ public class ParcelLockerServices {
     }
 
 
+
     //#
-    private void printParcelLocker(List<ParcelLocker> parcelLockers) {
-        for (int i = 0; i < parcelLockers.size(); i++) {
-            System.out.println((i + 1) + ".- " + parcelLockers.get(i));
+    public void printParcelLocker() {
+        int counter = 0;
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            counter++;
+            System.out.println(counter + ".- " + parcelLocker.getID() + " " + parcelLocker.getAdress().toString());
         }
     }
 }

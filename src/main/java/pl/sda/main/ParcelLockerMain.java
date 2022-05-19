@@ -1,7 +1,9 @@
 package pl.sda.main;
 
+import pl.sda.model.parcel_locker.ParcelLocker;
 import pl.sda.services.ParcelLockerServices;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ParcelLockerMain {
@@ -19,6 +21,7 @@ public class ParcelLockerMain {
                 System.out.println("0. - Wyjście");
                 System.out.println("1. - Dodanie paczkomatu");
                 System.out.println("2. - Usunięcie paczkomatu");
+                System.out.println("3. - Wyświetlenie wszystkich paczkomatów");
 
                 menu = scanner.nextInt();
 
@@ -30,6 +33,8 @@ public class ParcelLockerMain {
                     case 1: parcelLockerAdding();
                         break;
                     case 2: removeParcelLockerFromList();
+                        break;
+                    case 3: printParcelLockers();
                         break;
 
 
@@ -67,6 +72,11 @@ public class ParcelLockerMain {
             }else {
                 System.out.println("Nie udało się usunąć oaczkomatu o ID: " + id);
             }
+    }
+
+    //#3
+    public static void printParcelLockers(){
+       parcelLockerServices.printParcelLocker();
     }
 
 
