@@ -5,6 +5,7 @@ import pl.sda.model.parcel_locker.ParcelLocker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ParcelLockerServices {
@@ -34,10 +35,7 @@ public class ParcelLockerServices {
             return true;
         }
         return false;
-
     }
-
-
 
     //#3
     public void printParcelLocker() {
@@ -59,7 +57,29 @@ public class ParcelLockerServices {
             }
         }
     }
-}
+    //#5
+    public void setNewAdessData( String id, String street, String city, String zip){
+        ParcelLocker parcelLocker = getParcelLockerbyID(id);
+        parcelLocker.getAdress().setStreet(street);
+        parcelLocker.getAdress().setCity(city);
+        parcelLocker.getAdress().setZipCode(zip);
+    }
+
+
+    //#5
+    private ParcelLocker getParcelLockerbyID(String id){
+       for (ParcelLocker parcelLocker:parcelLockers){
+           if (parcelLocker.getID().equals(id))
+               return  parcelLocker;
+       }
+       return null;
+    }
+
+
+    }
+
+
+
 
 
 

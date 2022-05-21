@@ -23,6 +23,7 @@ public class ParcelLockerMain {
                 System.out.println("2. - Usunięcie paczkomatu");
                 System.out.println("3. - Wyświetlenie wszystkich paczkomatów");
                 System.out.println("4. - Wyświetlanie wszystkich paczkomatów w wybranym mieście");
+                System.out.println("5. - Zmiana danych adresowych istniejącego paczkomatu");
 
                 menu = scanner.nextInt();
 
@@ -38,6 +39,8 @@ public class ParcelLockerMain {
                     case 3: printParcelLockers();
                         break;
                     case 4: displayParcelLockersInTheCity();
+                        break;
+                    case 5: settingNewAdressToPackerLocker();
                         break;
 
 
@@ -89,7 +92,24 @@ public class ParcelLockerMain {
         String city = scanner.next();
         parcelLockerServices.showParcelLockersInTheCity(city);
 
+    }
 
+    //#5
+    public static void settingNewAdressToPackerLocker(){
+
+        System.out.println("Podaj ID paczkomatu");
+        String id = scanner.next();
+
+        System.out.println("Podaj nową nazwę ulicy");
+        String street = scanner.next();
+
+        System.out.println("Podaj nową miejscowość");
+        String city = scanner.next();
+
+        System.out.println("Podaj nowy kod kreskowy");
+        String zip = scanner.next();
+
+        parcelLockerServices.setNewAdessData(id, street, city,zip);
     }
 
 
