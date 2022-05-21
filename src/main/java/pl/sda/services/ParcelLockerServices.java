@@ -39,12 +39,24 @@ public class ParcelLockerServices {
 
 
 
-    //#
+    //#3
     public void printParcelLocker() {
         int counter = 0;
         for (ParcelLocker parcelLocker : parcelLockers) {
             counter++;
             System.out.println(counter + ".- " + parcelLocker.getID() + " " + parcelLocker.getAdress().toString());
+        }
+    }
+    //#4
+    public void showParcelLockersInTheCity(String city){
+        int counter = 0;
+        for (ParcelLocker parcelLocker : parcelLockers){
+            if (parcelLocker.getAdress().getCity().equals(city)){
+                counter++;
+                System.out.println(counter + ".- " + parcelLocker.getID() + " " + parcelLocker.getAdress().toString());
+            }else {
+                System.out.println("Brak paczkomatów w wybranej miejscowości");
+            }
         }
     }
 }

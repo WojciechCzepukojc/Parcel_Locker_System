@@ -22,6 +22,7 @@ public class ParcelLockerMain {
                 System.out.println("1. - Dodanie paczkomatu");
                 System.out.println("2. - Usunięcie paczkomatu");
                 System.out.println("3. - Wyświetlenie wszystkich paczkomatów");
+                System.out.println("4. - Wyświetlanie wszystkich paczkomatów w wybranym mieście");
 
                 menu = scanner.nextInt();
 
@@ -35,6 +36,8 @@ public class ParcelLockerMain {
                     case 2: removeParcelLockerFromList();
                         break;
                     case 3: printParcelLockers();
+                        break;
+                    case 4: displayParcelLockersInTheCity();
                         break;
 
 
@@ -77,6 +80,16 @@ public class ParcelLockerMain {
     //#3
     public static void printParcelLockers(){
        parcelLockerServices.printParcelLocker();
+    }
+
+
+    //#4
+    public static void displayParcelLockersInTheCity(){
+        System.out.println("Podaj miejscowość");
+        String city = scanner.next();
+        parcelLockerServices.showParcelLockersInTheCity(city);
+
+
     }
 
 
