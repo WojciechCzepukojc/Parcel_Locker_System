@@ -45,20 +45,22 @@ public class ParcelLockerServices {
             System.out.println(counter + ".- " + parcelLocker.getID() + " " + parcelLocker.getAdress().toString());
         }
     }
+
     //#4
-    public void showParcelLockersInTheCity(String city){
+    public void showParcelLockersInTheCity(String city) {
         int counter = 0;
-        for (ParcelLocker parcelLocker : parcelLockers){
-            if (parcelLocker.getAdress().getCity().equals(city)){
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getAdress().getCity().equals(city)) {
                 counter++;
                 System.out.println(counter + ".- " + parcelLocker.getID() + " " + parcelLocker.getAdress().toString());
-            }else {
+            } else {
                 System.out.println("Brak paczkomatów w wybranej miejscowości");
             }
         }
     }
+
     //#5
-    public void setNewAdessData( String id, String street, String city, String zip){
+    public void setNewAdessData(String id, String street, String city, String zip) {
         ParcelLocker parcelLocker = getParcelLockerbyID(id);
         parcelLocker.getAdress().setStreet(street);
         parcelLocker.getAdress().setCity(city);
@@ -67,16 +69,16 @@ public class ParcelLockerServices {
 
 
     //#5
-    private ParcelLocker getParcelLockerbyID(String id){
-       for (ParcelLocker parcelLocker:parcelLockers){
-           if (parcelLocker.getID().equals(id))
-               return  parcelLocker;
-       }
-       return null;
+    private ParcelLocker getParcelLockerbyID(String id) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getID().equals(id))
+                return parcelLocker;
+        }
+        return null;
     }
 
 
-    }
+}
 
 
 

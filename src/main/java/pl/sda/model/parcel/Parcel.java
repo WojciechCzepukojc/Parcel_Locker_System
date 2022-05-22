@@ -113,13 +113,14 @@ public class Parcel extends ParcelLockerServices {
         }
     }
 
-    private String isParcelLockerExist(String id){
-        for (ParcelLocker parcelLocker: parcelLockers)
-            if (parcelLocker.getID().equals(id)){
+    private String isParcelLockerExist(String id) {
+        for (ParcelLocker parcelLocker : parcelLockers)
+            if (parcelLocker.getID().equals(id)) {
                 return parcelLocker.getID();
-            }else {
+            } else {
                 throw new NoSuchElementException("Podano błęde id");
-            }return null;
+            }
+        return null;
     }
 
 

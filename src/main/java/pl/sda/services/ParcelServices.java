@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ParcelServices extends ParcelLockerServices{
+public class ParcelServices extends ParcelLockerServices {
 
     private List<Parcel> parcels = new ArrayList<>();
 
 
     //#6
-    public String addNewParcel(String weight, String sender, String recipient, String senderParcelLocker, String recipientParcelLocker ){
+    public String addNewParcel(String weight, String sender, String recipient, String senderParcelLocker, String recipientParcelLocker) {
         Parcel parcel = new Parcel(weight, sender, recipient, senderParcelLocker, recipientParcelLocker);
         parcels.add(parcel);
         return parcel.getId();
