@@ -2,6 +2,7 @@ package pl.sda.main;
 
 import pl.sda.model.parcel_locker.ParcelLocker;
 import pl.sda.services.ParcelLockerServices;
+import pl.sda.services.ParcelServices;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class ParcelLockerMain {
 
 
         private static ParcelLockerServices parcelLockerServices = new ParcelLockerServices();
+        private static ParcelServices parcelServices = new ParcelServices();
         private static Scanner scanner = new Scanner(System.in);
 
         public static void main(String[] args) {
@@ -19,11 +21,12 @@ public class ParcelLockerMain {
             do {
                 System.out.println("Wybierz co chcesz zrobić: ");
                 System.out.println("0. - Wyjście");
-                System.out.println("1. - Dodanie paczkomatu");
+                System.out.println("1. - Dodanie nowego paczkomatu");
                 System.out.println("2. - Usunięcie paczkomatu");
                 System.out.println("3. - Wyświetlenie wszystkich paczkomatów");
                 System.out.println("4. - Wyświetlanie wszystkich paczkomatów w wybranym mieście");
                 System.out.println("5. - Zmiana danych adresowych istniejącego paczkomatu");
+                System.out.println("6. - Dodanie nowej paczki");
 
                 menu = scanner.nextInt();
 
@@ -41,6 +44,8 @@ public class ParcelLockerMain {
                     case 4: displayParcelLockersInTheCity();
                         break;
                     case 5: settingNewAdressToPackerLocker();
+                        break;
+                    case 6: addingNewParcel();
                         break;
 
 
@@ -110,6 +115,31 @@ public class ParcelLockerMain {
         String zip = scanner.next();
 
         parcelLockerServices.setNewAdessData(id, street, city,zip);
+    }
+
+    //#6
+    public static void addingNewParcel(){
+        System.out.println("Podaj symbol oznaczający wagę paczki :" +
+                "A - do 1kg" +
+                "B - do 5kg" +
+                "C - do 15kg" +
+                "D - powyżej 15kg");
+        String weight = scanner.next();
+
+        System.out.println("Wprowadź nadawcę");
+        String sender = scanner.next();
+
+        System.out.println("Wprowadź odbiorcę");
+        String recipient = scanner.next();
+
+        System.out.println("Podaj ID paczkomatu nadawcy");
+        String senderPL = scanner.next();
+
+        System.out.println("Podaj ID paczkomatu odbiorcy");
+        String recipientPL = scanner.next();
+
+        String id = parcelServices.addNewParcel(weight, sender,recipient,senderPL,recipientPL);
+        System.out.println("Pomyślnie dodano paczkę o ID " + id);
     }
 
 

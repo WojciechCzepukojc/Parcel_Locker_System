@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class ParcelLockerServices {
 
-    private List<ParcelLocker> parcelLockers = new ArrayList<>();
+    protected List<ParcelLocker> parcelLockers = new ArrayList<>();
 
     //#1
     public String addNewParcelLocker(String street, String city, String zipCode) {
