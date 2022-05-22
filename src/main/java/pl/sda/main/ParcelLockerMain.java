@@ -23,10 +23,11 @@ public class ParcelLockerMain {
                 System.out.println("0. - Wyjście");
                 System.out.println("1. - Dodanie nowego paczkomatu");
                 System.out.println("2. - Usunięcie paczkomatu");
-                System.out.println("3. - Wyświetlenie wszystkich paczkomatów");
+                System.out.println("3. - Wyświetlanie wszystkich paczkomatów");
                 System.out.println("4. - Wyświetlanie wszystkich paczkomatów w wybranym mieście");
                 System.out.println("5. - Zmiana danych adresowych istniejącego paczkomatu");
                 System.out.println("6. - Dodanie nowej paczki");
+                System.out.println("7. - Usunięcie paczki");
 
                 menu = scanner.nextInt();
 
@@ -46,6 +47,8 @@ public class ParcelLockerMain {
                     case 5: settingNewAdressToPackerLocker();
                         break;
                     case 6: addingNewParcel();
+                        break;
+                    case 7: parcelRemove();
                         break;
 
 
@@ -81,7 +84,7 @@ public class ParcelLockerMain {
             if (result){
                 System.out.println("Paczkomat o ID: " + id + " został poprawnie usunięty");
             }else {
-                System.out.println("Nie udało się usunąć oaczkomatu o ID: " + id);
+                System.out.println("Nie udało się usunąć paczkomatu o ID: " + id);
             }
     }
 
@@ -120,9 +123,9 @@ public class ParcelLockerMain {
     //#6
     public static void addingNewParcel(){
         System.out.println("Podaj symbol oznaczający wagę paczki :" +
-                "A - do 1kg" +
-                "B - do 5kg" +
-                "C - do 15kg" +
+                "A - do 1kg " +
+                "B - do 5kg " +
+                "C - do 15kg " +
                 "D - powyżej 15kg");
         String weight = scanner.next();
 
@@ -140,6 +143,17 @@ public class ParcelLockerMain {
 
         String id = parcelServices.addNewParcel(weight, sender,recipient,senderPL,recipientPL);
         System.out.println("Pomyślnie dodano paczkę o ID " + id);
+    }
+    //#7
+    public static void parcelRemove(){
+        System.out.println("Podaj ID paczki którą chcesz usunąć");
+        String id = scanner.next();
+        boolean result = parcelServices.removeParcel(id);
+        if (result){
+            System.out.println("Paczka o ID: " + id + " została poprawnie usunięta");
+        }else {
+            System.out.println("Nie udało się usunąć paczki o ID: " + id);
+        }
     }
 
 
